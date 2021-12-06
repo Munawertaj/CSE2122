@@ -3,9 +3,26 @@ import java.text.*;
 import java.util.*;
 public class StudentList
 {
+	public static String readFile()
+	{
+		try
+		{
+			String fullLine;
+			BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt")));
+			fullLine = bufferReader.readLine();
+			bufferReader.close();
+			return fullLine;
+		}
+		catch(Exception exception)
+		{
+			System.out.println("Can't open file");
+			return null;
+		}
+	}
 	public static void main(String[] args)
 	{
-//		Check arguments
+		String fullLine = readFile();
+		//Check arguments
 		if ((args==null)||(args.length==0))
 		{
 			System.out.println("Invalid argument.Please Enter a valid argument:a/r/c");
@@ -15,8 +32,6 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt")));
-				String fullLine = bufferReader.readLine();
 				String studentNames[] = fullLine.split(",");
 				for(String student : studentNames)
 				{
@@ -34,8 +49,6 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt")));
-				String fullLine = bufferReader.readLine();
 				String studentNames[] = fullLine.split(",");
 				Random random = new Random();
 				int size = random.nextInt(studentNames.length);
@@ -73,8 +86,6 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-				BufferedReader bufferReader = new BufferedReader(new InputStreamReader(new FileInputStream("students.txt")));
-				String fullLine = bufferReader.readLine();
 				String studentNames[] = fullLine.split(",");
 				boolean done = false;
 				String addStudent = args[0].substring(1);
