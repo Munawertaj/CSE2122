@@ -25,7 +25,6 @@ public class StudentList {
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
 			String r = s.readLine();
-			System.out.println(r);
 			String i[] = r.split(",");	
 			Random x = new Random();
 				int y = x.nextInt();
